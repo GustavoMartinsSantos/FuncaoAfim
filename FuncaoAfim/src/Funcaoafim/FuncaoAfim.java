@@ -3,16 +3,17 @@ package Funcaoafim;
 import java.util.Scanner;
 
 public class FuncaoAfim {
-	private static int a = 0;
-	private static int b = 0;
-	private static int x;
-
 	public static void main(String[] args) {
 		Scanner input = new Scanner (System.in);
 		System.out.println("Função Afim:");
 		
 		System.out.print("Digite 1 para criar uma função e 2 para calcular uma função:");
 		String option = input.next();
+		
+		double a = 0;
+		double b = 0;
+		double x;
+		double y;
 		
 		while (option.equals("1")) {
 			System.out.println("(OBS: o programa irá calcular uma possível função para esses pontos)");
@@ -25,7 +26,7 @@ public class FuncaoAfim {
 			} // x deve ser diferente de 0 para o programa conseguir fazer a divisão 
 			  // e calcular o valor de a. Num / 0 == ?
 			
-			int y = input.nextInt();
+			y = input.nextInt();
 			System.out.println("(" + x + "," + y + ")"); 
 			
 			System.out.print("Digite o valor b:");
@@ -33,15 +34,18 @@ public class FuncaoAfim {
 			a = (y - b) / x;
 		
 			if (y == b) 
-				System.out.println("f(x) = " + b + " -> Função constante");
+				System.out.println("y = " + b + " -> Função constante");
 			else if (a > 0 && b == 0)
-				System.out.println("f(x) = " + a + "x -> Função linear crescente");
+				if (a == 1)
+					System.out.println("y = x -> Função identidade.");
+				else 
+					System.out.println("y = " + a + "x -> Função linear crescente");
 			else if (a < 0 && b == 0)
-				System.out.println("f(x) = " + a + "x -> Função linear decrescente");
+				System.out.println("y = " + a + "x -> Função linear decrescente");
 			else if (a > 0)
-				System.out.println("f(x) = " + a + "x + " + b + " -> Função crescente");
+				System.out.println("y = " + a + "x + " + b + " -> Função crescente");
 			else if (a < 0)
-				System.out.println("f(x) = " + a + "x + " + b + " -> Função decrescente");
+				System.out.println("y = " + a + "x + " + b + " -> Função decrescente");
 			else
 				System.out.println("Não é função.");
 			
@@ -71,10 +75,7 @@ public class FuncaoAfim {
 			x = 0;
 			// reinicialização das variáveis
 			
-			System.out.print("criar função (1) - calcular função (2):");
-			option = input.next();
-			if (option.equals("1"))
-				main(null);
+			main(null);
 		} 
 		
 		System.out.println("Obrigado por usar o programa!!");
